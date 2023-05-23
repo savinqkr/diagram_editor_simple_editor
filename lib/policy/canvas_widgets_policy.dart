@@ -35,12 +35,11 @@ mixin MyCanvasWidgetsPolicy implements CanvasWidgetsPolicy, CustomStatePolicy {
     DragTargetDetails details,
     BuildContext context,
   ) {
-    // final RenderBox renderBox = context.findRenderObject();
-    // final Offset localOffset = renderBox.globalToLocal(details.offset);
+    final RenderBox renderBox = context.findRenderObject() as RenderBox;
+    final Offset localOffset = renderBox.globalToLocal(details.offset);
     ComponentData componentData = details.data;
-    Offset componentPosition = const Offset(300, 300);
-    // Offset componentPosition =
-    //     canvasReader.state.fromCanvasCoordinates(localOffset);
+    Offset componentPosition =
+        canvasReader.state.fromCanvasCoordinates(localOffset);
     String componentId = canvasWriter.model.addComponent(
       ComponentData(
         position: componentPosition,
